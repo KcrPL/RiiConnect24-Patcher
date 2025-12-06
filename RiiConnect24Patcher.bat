@@ -19,10 +19,10 @@ echo	The program is starting...
 
 :: ===========================================================================
 :: RiiConnect24 Patcher for Windows
-set version=1.5.2
+set version=1.6.0
 :: AUTHORS: KcrPL
 :: ***************************************************************************
-:: Copyright (c) 2018-2023 KcrPL, RiiConnect24 and it's (Lead) Developers
+:: Copyright (c) 2018-2025 KcrPL, RiiConnect24 and it's (Lead) Developers
 :: ===========================================================================
 
 if exist temp.bat del /q temp.bat
@@ -104,7 +104,7 @@ set free_sd_card_space_bytes=9999999999
 
 For /F "Delims=" %%A In ('ver') do set "windows_version=%%A"
 
-set post_url=https://patcher.rc24.xyz/v1/reporting.php
+set post_url=https://kcrpl-update.app/update/RiiConnect24-Patcher/v1/reporting/reporting.php
 
 set mm=0
 set ss=0
@@ -117,8 +117,8 @@ if %beta%==1 set title=RiiConnect24 Patcher v%version% [BETA] Created by @KcrPL
 
 title %title%
 
-set last_build=2023/01/08
-set at=11:44 CET
+set last_build=2025/06/12
+set at=19:00 CET
 :: ### Auto Update ###
 :: 1=Enable 0=Disable
 :: Update_Activate - If disabled, patcher will not even check for updates, default=1
@@ -127,8 +127,8 @@ set at=11:44 CET
 :: MainFolder/TempStorage - folder that is used to keep version.txt and whatsnew.txt. These two files are deleted every startup but if offlinestorage will be set 1, they won't be deleted.
 set /a Update_Activate=1
 set /a offlinestorage=0
-if %beta%==0 set FilesHostedOn=https://patcher.rc24.xyz/update/RiiConnect24-Patcher/v1
-if %beta%==1 set FilesHostedOn=https://patcher.rc24.xyz/update/RiiConnect24-Patcher_BETA/v1
+if %beta%==0 set FilesHostedOn=https://kcrpl-update.app/update/RiiConnect24-Patcher/v1
+if %beta%==1 set FilesHostedOn=https://kcrpl-update.app/update/RiiConnect24-Patcher_BETA/v1
 
 
 if "%1"=="-preboot" set /a preboot_environment=1
@@ -136,8 +136,8 @@ if "%1"=="-preboot" set /a preboot_environment=1
 :: Other patchers repositories
 
 
-set FilesHostedOn_Beta=https://patcher.rc24.xyz/update/RiiConnect24-Patcher_BETA/v1
-set FilesHostedOn_Stable=https://patcher.rc24.xyz/update/RiiConnect24-Patcher/v1
+set FilesHostedOn_Beta=https://kcrpl-update.app/update/RiiConnect24-Patcher_BETA/v1
+set FilesHostedOn_Stable=https://kcrpl-update.app/update/RiiConnect24-Patcher/v1
 set CheckNUS.Domain=http://ccs.cdn.sho.rc24.xyz
 set useragent=--user-agent "RiiConnect24 Patcher Windows v%version%"
 
@@ -213,7 +213,7 @@ goto script_start_languages
 	exit /b
 
 :check_rc24_server_connection
-call curl -f -L -s %useragent% --insecure "https://patcher.rc24.xyz/connection_test.txt">NUL
+call curl -f -L -s %useragent% --insecure "https://kcrpl-update.app/update/RiiConnect24-Patcher/v1/connection_test.txt">NUL
 	set /a temperrorlev=%errorlevel%
 
 	if not "%temperrorlev%"=="0" exit /b 1
@@ -1004,6 +1004,24 @@ goto not_windows_nt
 set /a sdcard_refresh_pending=0
 goto script_start_languages_2
 
+:rc24_deprecated
+cls
+echo %header%
+echo -----------------------------------------------------------------------------------------------------------------------------
+echo.
+echo Hello! You're still using this tool. Good to see you here.
+echo.
+echo RiiConnect24 is now a part of WiiLink project.
+echo You will need to use the WiiLink Patcher to get the patched channels.
+echo.
+echo You can still use this tool but the main functionality is now disabled.
+echo.
+echo You can find the WiiLink Patcher here: https://github.com/WiiLink24/WiiLink24-Patcher
+echo.
+echo Press any key to return to main menu.
+pause>NUL
+goto begin_main
+
 :begin_main
 cls
 if "%sdcard_refresh_pending%"=="1" goto refresh_sdcard
@@ -1777,7 +1795,7 @@ call curl -f -L -s %useragent% --insecure "http://www.msftncsi.com/ncsi.txt">NUL
 
 		title %string78% :--         :
 
-For /F "Delims=" %%A In ('call curl -f -L -s %useragent% --insecure "https://patcher.rc24.xyz/connection_test.txt"') do set "connection_test=%%A"
+For /F "Delims=" %%A In ('call curl -f -L -s %useragent% --insecure "https://kcrpl-update.app/update/RiiConnect24-Patcher/v1/connection_test.txt"') do set "connection_test=%%A"
 	set /a temperrorlev=%errorlevel%
 	
 	if not "%connection_test%"=="OK" title %title%& goto server_dead
@@ -2534,7 +2552,7 @@ echo 4. %string165%
 echo   - %string166%
 set /p s=%string26%: 
 
-if %s%==1 set sound_play=confirm1&call :sound_play&goto 2_prepare
+if %s%==1 set sound_play=confirm1&call :sound_play&goto rc24_deprecated
 if %s%==2 set sound_play=confirm1&call :sound_play&goto wadgames_patch_info
 if %s%==3 set sound_play=confirm1&call :sound_play&goto wiimmfi_patcher_prepare
 if %s%==4 set sound_play=confirm1&call :sound_play&goto open_shop_sdcarddetect
@@ -2673,7 +2691,7 @@ echo.
 echo 5. %string165%
 echo   - %string166%
 set /p s=%string26%: 
-if %s%==1 set sound_play=confirm1&call :sound_play&goto 2_prepare_wiiu
+if %s%==1 set sound_play=confirm1&call :sound_play&goto rc24_deprecated
 if %s%==2 set sound_play=confirm1&call :sound_play&goto direct_install_download_binary
 if %s%==3 set sound_play=confirm1&call :sound_play&goto wadgames_patch_info
 if %s%==4 set sound_play=confirm1&call :sound_play&goto wiimmfi_patcher_prepare
@@ -4252,8 +4270,8 @@ echo 6. %string165%
 echo   - %string166%
 echo.
 set /p s=%string26%: 
-if %s%==1 set sound_play=confirm1&call :sound_play&goto 2_prepare
-if %s%==2 set sound_play=confirm1&call :sound_play&goto 2_prepare_uninstall
+if %s%==1 set sound_play=confirm1&call :sound_play&goto rc24_deprecated
+if %s%==2 set sound_play=confirm1&call :sound_play&goto rc24_deprecated
 if %s%==3 set sound_play=confirm1&call :sound_play&goto direct_install_download_binary
 if %s%==4 set sound_play=confirm1&call :sound_play&goto wadgames_patch_info
 if %s%==5 set sound_play=confirm1&call :sound_play&goto wiimmfi_patcher_prepare
@@ -5846,6 +5864,7 @@ echo %string503%
 pause>NUL
 goto begin_main
 :2_prepare_uninstall
+goto rc24_deprecated
 cls
 echo %header%
 echo -----------------------------------------------------------------------------------------------------------------------------
