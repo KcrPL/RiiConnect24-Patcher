@@ -1,10 +1,9 @@
 # RiiConnect24 Patcher
 [![License](https://img.shields.io/github/license/riiconnect24/RiiConnect24-Patcher.svg?style=flat-square)](http://www.gnu.org/licenses/gpl-3.0)
 
-Thank you for using RiiConnect24! We're now a part of the [WiiLink](https://www.wiilink24.com/) project, and as such, we've decided to deprecate this patcher in favor of the updated [WiiLink Patcher](https://github.com/WiiLink24/WiiLink24-Patcher). Please follow the updated [installation guide](https://www.wiilink24.com/guide/install).
+Thank you for using RiiConnect24! We're now a part of the [WiiLink](https://www.wiilink24.com/) project, and as such, we've decided to deprecate the main features of this patcher in favor of the updated [WiiLink Patcher](https://github.com/WiiLink24/WiiLink24-Patcher). Please follow the updated [installation guide](https://www.wiilink24.com/guide/install).
 
-> [!IMPORTANT]
-> The RiiConnect24 Patcher (both Windows and Unix versions) may no longer work properly, and **no support** will be provided for using this patcher or the channels it patches.
+Other features such as WiiWare Patching and wad2bin will remain operational.
 
 ## Original Description
 RiiConnect24 Patcher is a program made for easier installation of RiiConnect24. With it, you can just sit back and relax while the patcher does everything for you.
