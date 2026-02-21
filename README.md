@@ -1,5 +1,5 @@
 # RiiConnect24 Patcher
-[![License](https://img.shields.io/github/license/riiconnect24/RiiConnect24-Patcher.svg?style=flat-square)](http://www.gnu.org/licenses/gpl-3.0)
+[![License](https://img.shields.io/github/license/kcrpl/RiiConnect24-Patcher.svg?style=flat-square)](http://www.gnu.org/licenses/gpl-3.0)
 
 Thank you for using RiiConnect24! We're now a part of the [WiiLink](https://www.wiilink24.com/) project, and as such, we've decided to deprecate the main features of this patcher in favor of the updated [WiiLink Patcher](https://github.com/WiiLink24/WiiLink24-Patcher). Please follow the updated [installation guide](https://www.wiilink24.com/guide/install).
 
